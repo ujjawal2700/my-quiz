@@ -1,0 +1,52 @@
+[
+  {
+    "question": "What is the primary purpose of JavaScript?",
+    "options": ["Server-side scripting", "Database management", "Client-side scripting", "System programming"],
+    "correctAnswer": "Client-side scripting"
+  },
+  {
+    "question": "Which data type is used to represent a sequence of characters in JavaScript?",
+    "options": ["Number", "Boolean", "String", "Object"],
+    "correctAnswer": "String"
+  },
+  {
+    "question": "What is the correct syntax for declaring a variable in JavaScript?",
+    "options": ["var myVariable", "let myVariable", "const myVariable", "all of the above"],
+    "correctAnswer": "all of the above"
+  },
+  {
+    "question": "Which keyword is used to define a function in JavaScript?",
+    "options": ["function", "var", "let", "const"],
+    "correctAnswer": "function"
+  },
+  {
+    "question": "What is the result of the following JavaScript expression: 2 + '3'?",
+    "options": ["5", "23", "Error", "undefined"],
+    "correctAnswer": "23"
+  },
+  {
+    "question": "Which method is used to convert a string to an integer in JavaScript?",
+    "options": ["parseInt()", "parseFloat()", "Number()", "toString()"],
+    "correctAnswer": "parseInt()"
+  },
+  {
+    "question": "What is the difference between '==' and '===' operators in JavaScript?",
+    "options": ["'==' checks for equality of value, while '===' checks for both value and type", "There is no difference between them", "'===' checks for equality of value, while '==' checks for both value and type", "They are both equivalent"],
+    "correctAnswer": "'==' checks for equality of value, while '===' checks for both value and type"
+  },
+  {
+    "question": "Which JavaScript keyword is used to exit a loop early?",
+    "options": ["break", "continue", "return", "stop"],
+    "correctAnswer": "break"
+  },
+  {
+    "question": "What is the purpose of the 'this' keyword in JavaScript?",
+    "options": ["To refer to the current object", "To define a variable", "To declare a function", "To create a new object"],
+    "correctAnswer": "To refer to the current object"
+  },
+  {
+    "question": "Which JavaScript event is triggered when a user clicks on a button?",
+    "options": ["onclick", "onmouseover", "onchange", "onkeydown"],
+    "correctAnswer": "onclick"
+  }
+]
