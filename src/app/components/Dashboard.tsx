@@ -53,7 +53,7 @@ function Dashboard() {
     <div
       className={cn(
         "rounded-md flex flex-col md:flex-row bg-gray-100 dark:bg-neutral-800 w-screen flex-1 mx-auto border border-neutral-200 dark:border-neutral-700 overflow-hidden",
-        "h-[100vh]" // for your use case, use `h-screen` instead of `h-[60vh]`
+        "h-[100vh]"
       )}
     >
       <Sidebar open={open} setOpen={setOpen}>
