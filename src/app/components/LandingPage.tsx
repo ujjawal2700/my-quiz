@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default async function Home() {
   return (
     <main>
@@ -49,11 +51,8 @@ export default async function Home() {
           </div>
         </div>
         <div className="w-full mt-4 lg:mt-0 lg:w-1/2">
-          <img
-            src="https://www.creative-tim.com/twcomponents/svg/website-designer-bro-purple.svg"
-            alt="tailwind css components"
-            className="w-full h-full max-w-md mx-auto"
-          />
+          
+          <Image src="https://www.creative-tim.com/twcomponents/svg/website-designer-bro-purple.svg" alt="image" className="w-full h-full max-w-md mx-auto" width={1} height={1}/>
         </div>
       </section>
     </main>
