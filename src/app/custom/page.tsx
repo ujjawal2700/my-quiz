@@ -1,9 +1,9 @@
 import React from 'react'
-import QuestionInput from '../components/Dashboard'
+import Dashboard from '../components/Dashboard';
 
 function Page() {
   return (
-    <QuestionInput />
+    <Dashboard />
   )
 }
 
