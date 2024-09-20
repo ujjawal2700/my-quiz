@@ -58,7 +58,7 @@ const TakeQuiz = () => {
   ];
 
   const [selectedAnswers, setSelectedAnswers] = useState(Array(questions.length).fill(null));
-  const [score, setScore] = useState(null);
+  const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(300); // 5 minutes in seconds
 
   useEffect(() => {
@@ -70,7 +70,7 @@ const TakeQuiz = () => {
     }
   }, [timeLeft]);
 
-  const handleOptionChange = (questionIndex: number, option: any) => {
+  const handleOptionChange = (questionIndex: number, option: string) => {
     const newSelectedAnswers = [...selectedAnswers];
     newSelectedAnswers[questionIndex] = option;
     setSelectedAnswers(newSelectedAnswers);

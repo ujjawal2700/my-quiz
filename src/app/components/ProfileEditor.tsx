@@ -12,7 +12,7 @@ const ProfileEditor = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const fileInputRef = useRef(null);
 
-  const handleNameChange = (e: any) => {
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newName = e.target.value;
     if (newName.length > 50) {
       setNameError('Name should not exceed 50 characters');
@@ -24,7 +24,7 @@ const ProfileEditor = () => {
     }
   };
 
-  const handleUsernameChange = (e: any) => {
+  const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newUsername = e.target.value;
     if (newUsername.length > 20) {
       setUsernameError('Username should not exceed 20 characters');
@@ -42,13 +42,15 @@ const ProfileEditor = () => {
     }
   };
 
-  const handleImageChange = (e: any) => {
-    const file = e.target.files[0];
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
     if (file) {
       if (file.type.startsWith('image/')) {
         const reader = new FileReader();
-        reader.onload = (e: any) => {
-          setImage(e.target.result);
+        reader.onload = (e: ProgressEvent<FileReader>) => {
+          if (e.target && typeof e.target.result === 'string') {
+            setImage(e.target.result);
+          }
           setImageError('');
         };
         reader.readAsDataURL(file);
@@ -58,17 +60,19 @@ const ProfileEditor = () => {
     }
   };
 
-  const handleDragOver = (e) => {
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
   };
 
-  const handleDrop = (e: any) => {
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
     if (file && file.type.startsWith('image/')) {
       const reader = new FileReader();
-      reader.onload = (e: any) => {
-        setImage(e.target.result);
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        if (e.target && typeof e.target.result === 'string') {
+          setImage(e.target.result);
+        }
         setImageError('');
       };
       reader.readAsDataURL(file);
@@ -77,7 +81,7 @@ const ProfileEditor = () => {
     }
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!nameError && !usernameError && !imageError) {
       setSuccessMessage('Profile updated successfully!');
@@ -128,11 +132,11 @@ const ProfileEditor = () => {
           </div>
 
           <div className="mt-4">
-            <div
+          <div
               className="relative border-2 border-dashed border-gray-300 rounded-lg p-4 text-center cursor-pointer transition-all hover:border-indigo-500"
               onDragOver={handleDragOver}
               onDrop={handleDrop}
-              onClick={() => fileInputRef.current.click()}
+              onClick={() => fileInputRef.current}
             >
               <input
                 type="file"
