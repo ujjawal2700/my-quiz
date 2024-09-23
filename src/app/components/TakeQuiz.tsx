@@ -58,8 +58,8 @@ const TakeQuiz = () => {
     },
   ];
 
-  // const questions1 = getQuestions()
-  // console.log(questions1)
+  const questions1 = getQuestions()
+  console.log(questions1)
 
   
 

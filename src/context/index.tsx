@@ -1,7 +1,7 @@
 import { createContext, useContext} from "react";
 
 const AppContext = createContext({
-  makeActive: (index) => {},
+  makeActive: () => {},
   active: ""
 });
 
