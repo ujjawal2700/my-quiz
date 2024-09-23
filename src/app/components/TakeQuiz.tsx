@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import getQuestions from '../api/fetchData';
 
 const TakeQuiz = () => {
 
@@ -16,11 +17,6 @@ const TakeQuiz = () => {
       correctAnswer: "Mars",
     },
     {
-      question: "What is the largest ocean on Earth?",
-      options: ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
-      correctAnswer: "Pacific Ocean",
-    },
-    {
       question: "Who wrote 'Romeo and Juliet'?",
       options: ["William Shakespeare", "Charles Dickens", "Mark Twain", "Jane Austen"],
       correctAnswer: "William Shakespeare",
@@ -29,11 +25,6 @@ const TakeQuiz = () => {
       question: "What is the smallest prime number?",
       options: ["0", "1", "2", "3"],
       correctAnswer: "2",
-    },
-    {
-      question: "Which element has the chemical symbol 'O'?",
-      options: ["Oxygen", "Gold", "Silver", "Iron"],
-      correctAnswer: "Oxygen",
     },
     {
       question: "What is the hardest natural substance on Earth?",
@@ -46,27 +37,42 @@ const TakeQuiz = () => {
       correctAnswer: "Leonardo da Vinci",
     },
     {
-      question: "What is the largest planet in our solar system?",
-      options: ["Earth", "Mars", "Jupiter", "Saturn"],
-      correctAnswer: "Jupiter",
+      question: "Who painted the Mona Lisa?",
+      options: ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Claude Monet"],
+      correctAnswer: "Leonardo da Vinci",
     },
     {
-      question: "What is the boiling point of water?",
-      options: ["90°C", "100°C", "110°C", "120°C"],
-      correctAnswer: "100°C",
+      question: "Who painted the Mona Lisa?",
+      options: ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Claude Monet"],
+      correctAnswer: "Leonardo da Vinci",
+    },
+    {
+      question: "Who painted the Mona Lisa?",
+      options: ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Claude Monet"],
+      correctAnswer: "Leonardo da Vinci",
+    },
+    {
+      question: "Who painted the Mona Lisa?",
+      options: ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Claude Monet"],
+      correctAnswer: "Leonardo da Vinci",
     },
   ];
 
+  
+  // const questions1 = getQuestions()
+  // console.log(questions1)
+
+  
+
   const [selectedAnswers, setSelectedAnswers] = useState(Array(questions.length).fill(null));
-  const [score, setScore] = useState(0);
+  const [check, setCheck] = useState(false)
+  const [score, setScore] = useState<number | null>(null);
   const [timeLeft, setTimeLeft] = useState(300); // 5 minutes in seconds
 
   useEffect(() => {
     if (timeLeft > 0) {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
       return () => clearTimeout(timer);
-    } else {
-      handleSubmit();
     }
   }, [timeLeft]);
 
@@ -84,10 +90,17 @@ const TakeQuiz = () => {
       }
     });
     setScore(newScore);
+    setCheck(true)
+    console.log("clicked")
   };
 
+  const changeQuestion = () => {
+    console.log("clicked change question")
+  }
+
+
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 overflow-scroll">
       <h1 className="text-2xl font-bold mb-4">General Knowledge Quiz</h1>
       <div className="mb-4">
         <span className="font-semibold">Time Left: </span>
@@ -103,6 +116,8 @@ const TakeQuiz = () => {
                   type="radio"
                   name={`question-${index}`}
                   value={option}
+                  disabled={check}
+                  required={true}
                   checked={selectedAnswers[index] === option}
                   onChange={() => handleOptionChange(index, option)}
                   className="mr-2"
@@ -113,13 +128,20 @@ const TakeQuiz = () => {
           </div>
         </div>
       ))}
+      <div className='relative flex gap-5'>
+      <button
+        onClick={changeQuestion}
+        className="bg-blue-500 text-white p-2 rounded"
+      >
+        Next Quiz
+      </button>
       <button
         onClick={handleSubmit}
         className="bg-blue-500 text-white p-2 rounded"
-        disabled={score !== null}
       >
         Submit
       </button>
+      </div>
       {score !== null && (
         <div className="mt-4">
           <h2 className="text-xl font-semibold">Your Score: {score} / {questions.length}</h2>

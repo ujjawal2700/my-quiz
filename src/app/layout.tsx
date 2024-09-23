@@ -1,11 +1,5 @@
-import type { Metadata } from "next";
+"use client"
 import "./globals.css";
-
-
-export const metadata: Metadata = {
-  title: "My Quiz App",
-  description: "Created my Ujjawal",
-};
 
 export default function RootLayout({
   children,
@@ -14,9 +8,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`antialiased`}
-      >
+      <body className={`antialiased`}>
         {children}
       </body>
     </html>

@@ -12,19 +12,10 @@ import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import ProfileEditor from "./ProfileEditor";
 import TakeQuiz from "./TakeQuiz";
 import CreateQuiz from "./CreateQuiz";
+import UserDetail from "./UserDetails";
 
-const UserDetail = () => {
-  return (
-    <div>
-      <div className="text-lg font-semibold text-gray-800 dark:text-neutral-200">
-        user email
-      </div>
-      <div className="text-sm text-gray-500 dark:text-neutral-400">
-        user name
-      </div>
-    </div>
-  );
-};
+
+
 
 const Dashboard = () => {
   const links = [
@@ -63,8 +54,7 @@ const Dashboard = () => {
   const [openCreateQuiz, setOpenCreateQuiz] = useState(false);
   const [open, setOpen] = useState(false);
 
-  const handleClick = (index: number) => {
-    console.log("handleClick");
+  const makeActive = (index: number) => {
 
     if (index == 0) {
       setOpenUserDetail(true);
@@ -103,7 +93,7 @@ const Dashboard = () => {
                 <SidebarLink
                   key={idx}
                   link={link}
-                  handleClick={() => handleClick(idx)}
+                  handleClick={() => makeActive(idx)}
                 />
               ))}
             </div>

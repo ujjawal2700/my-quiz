@@ -4,9 +4,12 @@ import {
   LoginLink,
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import Link from "next/link";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 
-const Navbar = () => {
+async function Navbar() {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
 
   return (
     <nav className=" p-4 bg-blue-600 sticky top-0 backdrop-blur border-b">

@@ -1,4 +1,5 @@
 "use client"
+import Image from 'next/image';
 import React, { useState, useRef } from 'react';
 import { FaUser, FaCamera, FaCheck } from 'react-icons/fa';
 
@@ -148,7 +149,7 @@ const ProfileEditor = () => {
               <div className="space-y-1 text-center">
                 <div className="mx-auto h-24 w-24 rounded-full overflow-hidden bg-gray-100">
                   {image ? (
-                    <img src={image} alt="Profile" className="h-full w-full object-cover" />
+                    <Image height={2} width={2} src={image} alt="Profile" className="h-full w-full object-cover" />
                   ) : (
                     <FaUser className="h-full w-full text-gray-300" />
                   )}
@@ -184,7 +185,7 @@ const ProfileEditor = () => {
           <h3 className="text-lg font-medium text-gray-900 mb-2">Preview</h3>
           <div className="flex items-center space-x-4">
             <div className="h-16 w-16 rounded-full overflow-hidden bg-gray-100">
-              <img src={image} alt="Profile Preview" className="h-full w-full object-cover" />
+              <Image height={2} width={2} src={image} alt="Profile Preview" className="h-full w-full object-cover" />
             </div>
             <div>
               <p className="text-sm font-medium text-gray-900">{name}</p>
