@@ -10,6 +10,7 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 async function Navbar() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
+  console.log(user);
 
   return (
     <nav className=" p-4 bg-blue-600 sticky top-0 backdrop-blur border-b">
